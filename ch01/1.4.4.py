@@ -77,14 +77,14 @@ taskManager.py程序(Windows版)
 '''
 
 # taskManager.py for windows
-import Queue
+import queue
 from multiprocessing.managers import BaseManager
 from multiprocessing import freeze_support
 #任务个数
 task_number = 10
 #定义收发队列
-task_queue = Queue.Queue(task_number)
-result_queue = Queue.Queue(task_number)
+task_queue = queue.Queue(task_number)
+result_queue = queue.Queue(task_number)
 def get_task():
     return task_queue
 def get_result():
@@ -106,11 +106,11 @@ def win_run():
         result = manager.get_result_queue()
         #添加任务
         for url in ["ImageUrl_"+str(i) for i in range(10)]:
-            print 'put task %s ...' %url
+            print('put task %s ...' %url)
             task.put(url)
-        print 'try get result...'
+        print('try get result...')
         for i in range(10):
-            print 'result is %s' %result.get(timeout=10)
+            print('result is %s' %result.get(timeout=10))
     except:
         print('Manager error')
     finally:
