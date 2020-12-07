@@ -1,6 +1,6 @@
 #coding:utf-8
-'''
-1. threading模块创建多线程
+
+#1. threading模块创建多线程
 
 import random
 import time, threading
@@ -22,7 +22,7 @@ t2.join()
 print '%s ended.' % threading.current_thread().name
 '''
 '''
-通过从threading.Thread继承创建线程类的方式
+#通过从threading.Thread继承创建线程类的方式
 
 import random
 import threading
@@ -33,11 +33,11 @@ class myThread(threading.Thread):
         self.urls = urls
 
     def run(self):
-    print 'Current %s is running...' % threading.current_thread().name
-    for url in self.urls:
-            print '%s ---->>> %s' % (threading.current_thread().name,url)
-            time.sleep(random.random())
-    print '%s ended.' % threading.current_thread().name
+        print('Current %s is running...' , threading.current_thread().name)
+        for url in self.urls:
+                print '%s ---->>> %s' % (threading.current_thread().name,url)
+                time.sleep(random.random())
+        print '%s ended.' % threading.current_thread().name
 print '%s is running...' % threading.current_thread().name
 t1 = myThread(name='Thread_1',urls=['url_1','url_2','url_3'])
 t2 = myThread(name='Thread_2',urls=['url_4','url_5','url_6'])
@@ -49,7 +49,7 @@ print '%s ended.' % threading.current_thread().name
 
 '''
 '''
-线程同步
+#线程同步
 
 import threading
 mylock = threading.RLock()
@@ -78,5 +78,5 @@ if __name__== '__main__':
     thread1.start()
     thread2.start()
 
-'''
+
 

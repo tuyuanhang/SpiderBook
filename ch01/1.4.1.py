@@ -19,9 +19,9 @@ import os
 from multiprocessing import Process
 # 子进程要执行的代码
 def run_proc(name):
-    print('Child process %s (%s) Running...' , name, os.getpid())
+    print(('Child process %s (%s) Running...' , name, os.getpid()))
 if __name__ == '__main__':
-    print('Parent process %s.', os.getpid())
+    print(('Parent process %s.', os.getpid()))
     p_list=[]
     for i in range(5):
         p = Process(target=run_proc, args=(str(i),))
@@ -33,26 +33,26 @@ if __name__ == '__main__':
     print ('Process end.')
 
 
-'''
+
 multiprocessing模块提供了一个Pool类来代表进程池对象
 
 from multiprocessing import Pool
 import os, time, random
 
 def run_task(name):
-    print 'Task %s (pid = %s) is running...' % (name, os.getpid())
+    print('Task %s (pid = %s) is running...' % (name, os.getpid()))
     time.sleep(random.random() * 3)
-    print 'Task %s end.' % name
+    print('Task %s end.' % name)
 
 if __name__=='__main__':
-    print 'Current process %s.' % os.getpid()
+    print('Current process %s.' % os.getpid())
     p = Pool(processes=3)
     for i in range(5):
         p.apply_async(run_task, args=(i,))
-    print 'Waiting for all subprocesses done...'
+    print('Waiting for all subprocesses done...')
     p.close()
     p.join()
-    print 'All subprocesses done.'
+    print('All subprocesses done.')
 
 '''
 '''
@@ -63,19 +63,19 @@ import os, time, random
 
 # 写数据进程执行的代码:
 def proc_write(q,urls):
-    print('Process(%s) is writing...' % os.getpid())
+    print(('Process(%s) is writing...' % os.getpid()))
     for url in urls:
         q.put(url)
-        print('Put %s to queue...' % url)
+        print(('Put %s to queue...' % url))
         time.sleep(random.random())
 
 # 读数据进程执行的代码:
 def proc_read(q):
-    print('Process(%s) is reading...' % os.getpid())
+    print(('Process(%s) is reading...' % os.getpid()))
     while True:
 
         url = q.get(True)
-        print('Get %s from queue.' % url)
+        print(('Get %s from queue.' % url))
 
 if __name__=='__main__':
     # 父进程创建Queue，并传给各个子进程：
@@ -103,15 +103,15 @@ import time,os
 
 def proc_send(pipe,urls):
     for url in urls:
-        print "Process(%s) send: %s" %(os.getpid(),url)
+        print("Process(%s) send: %s" %(os.getpid(),url))
         pipe.send(url)
         time.sleep(random.random())
 
 def proc_recv(pipe):
     while True:
-        print "Process(%s) rev:%s" %(os.getpid(),pipe.recv())
+        print("Process(%s) rev:%s" %(os.getpid(),pipe.recv()))
         time.sleep(random.random())
 
-'''
+
 
 

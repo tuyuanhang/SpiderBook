@@ -1,6 +1,6 @@
 #coding:utf-8
-'''
-gevent的使用流程
+
+#gevent的使用流程
 
 from gevent import monkey; monkey.patch_all()
 import gevent
@@ -21,7 +21,7 @@ if __name__=='__main__':
 '''
 
 '''
-gevent pool对象使用
+#gevent pool对象使用
 
 from gevent import monkey
 monkey.patch_all()
@@ -43,4 +43,3 @@ if __name__=='__main__':
     results = pool.map(run_task,urls)
     print results
 
-'''
